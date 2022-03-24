@@ -8,7 +8,8 @@ pipeline {
 		}
 		stage('Clone build') {
 			steps{
-			bat	"sh 'docker build -t duc1996/demo_build_image:v1 -f Dockerfile . '"
+			echo 'Start docker................'
+			sh 'docker build -t duc1996/demo_build_image:v1 -f Dockerfile . '
 			}
 		}
 	}
