@@ -9,7 +9,7 @@ pipeline {
 		stage('Clone build') {
 			steps{
 			echo 'Start docker................'
-			sh 'run_app.sh'
+			bash 'run_app.sh'
 			}
 		}
 	}
