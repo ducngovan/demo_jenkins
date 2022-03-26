@@ -1,4 +1,4 @@
-x`pipeline {
+pipeline {
 	agent any
 	stages {
 		stage('Clone git') {
