@@ -9,7 +9,7 @@ pipeline {
 		stage('Docker') {
 			steps{
 				withDockerRegistry(credentialsId: 'docker-hub', url: 'https://registry.hub.docker.com/') {
-				sh 'docker build -f duc1996/demo_image:v1 .'
+				sh 'docker build -t duc1996/demo_image:v1 .'
 				sh 'docker push duc1996/demo_image:v1'
 				}
 			}
