@@ -1,4 +1,4 @@
-pipeline {
+x`pipeline {
 	agent any
 	stages {
 		stage('Clone git') {
@@ -6,13 +6,14 @@ pipeline {
 				git branch: 'main', url: 'https://github.com/ducngovan/demo_jenkins.git'
 			}
 		}
-		stage('Clone build') {
+		stage('Docker') {
 			steps{
-			echo 'Start docker................'
-			sh """
-				docker build -t duc1996/demo_build_image:v1 .
-			"""
+				withDockerRegistry(credentialsId: 'docker-hub', url: 'https://registry.hub.docker.com/') {
+				sh 'docker build -f duc1996/demo_image:v1 .'
+				sh 'docker push duc1996/demo_image:v1'
+				}
 			}
 		}
+	
 	}
 }
